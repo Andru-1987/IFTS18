@@ -1,0 +1,119 @@
+def validacion(dato):
+	# Con esto permito conocer si mis datos son correspondientes
+	# a los datos permitidos
+
+	while (dato=='' or (not dato.isdigit())):
+		print('Valor no puede ser vacio')
+		dato=input('Ingrese el/los valor/es correcto/s\n')
+	return dato
+
+def validacionBono(valor):
+	# Validacion de datos correspondientes a los que puede admitir Bono
+
+	dato=valor.lower()
+	while not(dato=='%' or dato=='$' or dato=='no'):
+		print('Valores permitidos \"%\" , \"$\" o \"no\"')
+		dato=input('Ingrese el/los valor/es correcto/s\n')
+		
+	return dato
+
+
+def bonoSelector(dato,sbasico):
+
+	# Permite verificar que hacer si el empleado elige opciones en % o $ o ninguno
+
+	bonificacionValor=0
+
+	if dato=='no':
+		bonificacionValor=0
+
+	elif dato=='%':
+		bonificacionValorPrevio=input('Ingrese el valor porcentaje de bonificacion del 1 a 100. No ingrese el \"%\"" \n')
+		bonificacionValor=validacion(bonificacionValorPrevio)
+
+		bonificacionValor=float(sbasico)*(float(bonificacionValor)/100)
+
+	elif dato=='$':
+		bonificacionValorPrevio=input('Ingrese el valor en pesos de la bonificacion.\n')
+		bonificacionValor=float(validacion(bonificacionValorPrevio))
+
+	return bonificacionValor
+
+
+def ingresoDatos():
+	salarioPrevio=input('Ingrese Salario Basico en pesos: \n')
+	sbasico=validacion(salarioPrevio)
+	if sbasico=='0':
+		bonoTipo='no'
+		bonificacionValor=0
+		print('Gracias por usar el programa')
+	else:
+
+		bonoTipoPrevio=input('Ingrese el tipo de valor de bonificacion\n Ingrese \"%\" para ingresar un valor porcentual \n Ingrese \"$\" para ingresar un valor en pesos \n Ingrese \"No\" para bonificacion nula\n' )
+		bonoTipo=validacionBono(bonoTipoPrevio)
+
+		bonificacionValor=bonoSelector(bonoTipo,sbasico)
+
+
+	return float(sbasico),bonoTipo,bonificacionValor
+
+
+def maneraMostrarDatos(sueldoBasicoTotal,contadorEmpleadosBonificados,contadorEmpleado,valorBonosTotal):
+	# Calculo para una variable pedida
+	if contadorEmpleado==0:
+		sueldoPromedio,contadorEmpleadosBonificados,valorBonosTotal=0,0,0
+	else:
+	 	sueldoPromedio=round(sueldoBasicoTotal/contadorEmpleado,2)
+
+	totalConBonos=sueldoBasicoTotal+valorBonosTotal
+	
+
+	# Manera de mostrar los datos
+	print('La cantidad de empleados ingresados son: {} empleados'.format(contadorEmpleado))
+	print('Sueldo promedio de los impleados ingresados: $ {} '.format(sueldoPromedio))
+	print('Empleados que tuvieron bonificación: {} empleados'.format(contadorEmpleadosBonificados))
+	print('Informe total pagado con bonificación incluida: $ {}'.format(totalConBonos))
+
+
+# Inicio del Programa
+
+print('Bienvenido al programa de calculo de Bonificación\n Ingrese Valor de Sueldo Base en pesos\n Si desea dejar de cargar datos ingrese el valor \"0\"') 
+
+
+# Inicio de valores.
+# Selecciona, si el ingreso de dato es nulo y corta o sigue con el programa en cuestion
+
+
+sueldoBase,bonoTipo,valorDeBono=ingresoDatos()
+
+# contadores
+
+sueldoBasicoTotal=sueldoBase
+valorBonosTotal=valorDeBono
+contadorEmpleadosBonificados=0
+contadorEmpleado=0
+
+
+# Arranca el contador del primer empleado
+
+if bonoTipo=='$' or bonoTipo=='%':
+	contadorEmpleadosBonificados+=1
+
+	
+
+# Loop hasta que alguien coloque cero
+
+while not sueldoBase==0:
+
+	sueldoBase,bonoTipo,valorDeBono=ingresoDatos()
+
+	sueldoBasicoTotal+=sueldoBase
+	valorBonosTotal+=valorDeBono
+
+	contadorEmpleado+=1
+
+
+	if bonoTipo=='$' or bonoTipo=='%':
+		contadorEmpleadosBonificados+=1
+	
+maneraMostrarDatos(sueldoBasicoTotal,contadorEmpleadosBonificados,contadorEmpleado,valorBonosTotal)
