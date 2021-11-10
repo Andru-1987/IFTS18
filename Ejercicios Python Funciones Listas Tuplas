@@ -1,0 +1,775 @@
+# Ex.Python
+
+# 1)Escribir una función que calcule el total de una factura tras aplicarle el IVA.
+# La función debe recibir la cantidad sin IVA y el porcentaje de IVA a aplicar,
+# y devolver el total de la factura. Si se invoca la función sin pasarle el porcentaje de IVA,
+# deberá aplicar un 21%.
+
+
+# def calcIva(totalFactura, iva):
+# 	# calcula el valor final con Iva agregado y coloca como default
+# 	# convierte la variable a un INT. 
+
+# 	totalFactura*=(1+int(iva)/100)
+# 	return totalFactura
+
+# def main():
+
+# 	totalFactura=input('Ingrese el valor tota de la factura\n')
+# 	# Inserto un valor Input como default usando boolean
+# 	iva=input('Ingrese el valor del IVA a aplicar\n') or 21
+	
+
+# 	totalFactura=int(totalFactura)
+
+# 	total=calcIva(totalFactura,iva)
+
+# 	print('El valor total es {} + {}% de IVA= {}'.format(totalFactura,iva,total))
+# main()
+
+
+#2) Escribir una función que reciba una frase
+# y devuelva un diccionario con las palabras que contiene y su longitud.
+
+# def splitFrase(frase):
+	
+# 	# Designo los chars que quiero sacar
+
+# 	charsRemover='.!,:@?'
+# 	for char in charsRemover:
+# 		frase=frase.replace(char,' ')
+
+# 	# creo una lista de con las palabras
+
+# 	biblioteca=frase.split(' ')
+
+# 	# Filtro toda la lista para evitar item vacio: lista[item]=''
+# 	biblioteca=filter(lambda x: x!='',biblioteca)
+
+# 	# devuelvo una biblioteca de palabras
+# 	return biblioteca
+
+# def creaDic(biblioteca):
+# 	# Creo un dict vacio para ir anexando las palabras
+
+# 	diccionario={}
+
+# 	# por cada item creo un key:value
+
+# 	for i in biblioteca:
+# 		diccionario[i]=len(i)
+
+# 	# retorno un dict con cada palabra como key  y su len como value
+# 	return diccionario
+
+# def main():
+
+# 	frase=input('Ingrese una frase\n')
+# 	biblioteca=splitFrase(frase)
+# 	print(creaDic(biblioteca))
+
+# main()
+
+
+
+# 3) Escribir una función que, dado un número de DNI, 
+# retorne True si el número es válido y False si no lo es.
+# Para que un número de DNI sea válido debe tener entre 7 y 8 dígitos.
+
+
+
+# def dniValido(dni):
+
+# 	if len(dni)<=8 and len(dni)>=7 and dni.isdigit():
+# 		print(True)
+# 	else:
+# 		print(False)
+
+# dniValido(dni:=input('Ingrese DNI\n'))
+
+
+#4) Requerir al usuario que ingrese un número entero 
+# e informar si es primo o no, utilizando una función booleana que lo decida.
+
+
+# def primoNoPrimo(numero):
+
+# 	boolean=True
+
+# 	if numero=='2' or numero=='3':
+# 		 boolean=True
+
+# 	elif numero=='1':
+# 		 boolean=False
+# 	else:
+# 		numero=int(numero)
+
+# 		for n in range(2,int(numero/2+1)):
+
+		
+# 			if (numero%n==0):
+# 				boolean=False
+# 				break
+
+# 	return boolean
+
+# primoNoPrimo(numero:=int(input('Ingrese numero para saber si es primo o no\n')))
+
+
+# 5) Escribir un programa que pida números al usuario,
+# mostrar el factorial de cada uno y, al finalizar,
+# la cantidad total de números leídos en total.
+# Utilizar una o más funciones, según sea necesario.
+
+# def factorialNum(n):
+
+# 	# aplicando recursividad
+# 	if n==0:
+# 		return 1
+# 	else:
+# 		return n*factorialNum(n-1)
+
+
+# def ingresoNumero(numero):
+# 	fact=factorialNum(int(numero))
+# 	return int(numero),fact
+
+
+# def main():
+
+# 	numero=input('Ingrese #.\nPresione \"n\" o \"0\"para finalizar\nPor ingreso vacio termina el programa\n') or '0'
+# 	lista={}
+
+# 	while numero!='n':
+# 		if numero!='0':
+# 			key,value=ingresoNumero(numero)
+# 			lista[str(key)]=value
+# 			numero=input('Ingrese #.\nPresione \"n\" para finalizar\nPor Default espacio vacio termina el programa\n') or '0'
+# 		else:
+# 			break
+# 	print('Cantidad de números leídos: {}'.format(len(lista)))
+
+# 	for key, value in lista.items():
+# 		print('Factorial de {}'.format(key),'==>',value)
+
+# main()
+
+
+
+
+# 6) Solicitar al usuario el ingreso de números primos.
+# La lectura finalizará cuando ingrese un número que no sea primo.
+# Por cada número, mostrar la suma de sus dígitos.
+# También solicitar al usuario un dígito e informar 
+# la cantidad de veces que aparece en el número (frecuencia). 
+# Al finalizar el programa, mostrar el factorial del mayor número ingresado
+
+# def max(dic):
+
+# 	lista=[]
+
+# 	for item in dic:
+# 		for key in item:
+# 			key=int(key)
+# 			lista.append(key)
+
+# 	lista=sorted(lista)
+
+# 	if len(lista)==0:
+# 		index=0
+# 	else:
+# 		index=len(lista)-1
+
+# 	valMax=lista[index]
+
+# 	return valMax
+# def factorialNum(n):
+
+# 	# aplicando recursividad
+# 	if n==0:
+# 		return 1
+# 	else:
+# 		return n*factorialNum(n-1)
+
+# def primoNoPrimo(numero):
+
+# 	boolean=True
+
+# 	if numero=='2' or numero=='3':
+# 		 boolean=True
+
+# 	elif numero=='0':
+# 		boolean=False
+
+# 	elif numero=='1':
+# 		boolean=False
+# 	else:
+# 		numero=int(numero)
+
+# 		for n in range(2,int(numero/2+1)):
+# 			if (numero%n==0):
+# 				boolean=False
+# 				break
+
+# 	return boolean
+# def sumDig(numero):
+
+# 	suma=0
+# 	for i in numero:
+# 		suma+=int(i)
+# 	return suma
+# def contValores(numero):
+# 	lista={}
+# 	lista[numero]=sumDig(numero)
+# 	return lista
+# def notEmpty(numero):
+# 	while (len(numero)==0 or not(numero.isdigit())):
+# 		numero=(input('Ingrese # válido\n'))
+# 	return numero
+# def contador(n,lista):
+# 	cont=0
+
+# 	for item in lista:
+
+# 		if n in item:
+# 			cont+=1
+
+# 	return cont
+
+# def main():
+# 	print('Ingrese un # primo\nEl programa termina al ingresar un numero NO primo')
+# 	numero=notEmpty(numero:=input())
+# 	boolean=primoNoPrimo(numero)
+# 	biblioteca=[]
+# 	while (boolean==True):
+# 		biblioteca.append(contValores(numero))
+# 		numero=notEmpty(numero:=input())
+# 		boolean=primoNoPrimo(numero)
+# 	print(biblioteca)
+# 	valor=input('Ingrese el dígito disponible\n')
+# 	cont=contador(valor,biblioteca)
+# 	print('Cantidad de veces que se repite el #{} ==> {}'.format(valor,cont))
+
+# 	maxFact=factorialNum(max(biblioteca))
+# 	print('Factorial MAX ==> {}'.format(maxFact))
+
+# main()
+
+
+# 7)Escribir un programa que permita al usuario obtener 
+# un identificador para cada uno de los socios de un club.
+# Para eso ingresará nombre completo y número de DNI de cada socio,
+# indicando que finalizará el procesamiento mediante el ingreso de un nombre vacío.
+# Precondición: 
+# el formato del nombre de los socios será: nombre apellido.
+# Podría ingresarse más de un nombre, en cuyo caso será: nombre1 nombre2 apellido.
+# Si un socio tuviera más de un apellido, el usuario sólo ingresará uno.
+# Se debe validar que el número de DNI tenga 7 u 8 dígitos.
+# En caso contrario,
+# el programa debe dejar al usuario en un bucle hasta que ingrese un DNI correcto.
+# Por cada socio se debe imprimir su identificador único, el cual estará formado por:
+# el apellido( en minúsculas) y los últimos 4 dígitos de su DNI. 
+# Contabilizar la cantidad de socios nuevos ingresados.
+
+# def cantidadDeSocios(listaSocios):
+# 	print('Numero de Socios: {}'.format(len(listaSocios)))
+
+# def mostrarTodosSocios(listaSocios):
+# 	for i in listaSocios:
+# 		apellido=i.get('apellido')
+# 		idUsuario=i.get('ID')
+# 		print('Apellido del Usuario: {}.\nID del Usuario: {}\n'.format(apellido,idUsuario))
+
+# def mostrarUsuario(listaSocios, usuario):
+	
+# 	try:
+# 		usuario=usuario.lower()
+# 		usuarioGet=False
+# 		nombre,apellido,dni=None,None,None
+
+
+# 		for usuarios in listaSocios:
+# 			if usuarios.get('ID')==usuario:
+# 				usuarioGet=True
+# 				nombre=usuarios.get('nombre1')
+# 				apellido=usuarios.get('apellido')
+# 				dni=usuarios.get('dni')
+
+# 		if usuarioGet==False:
+# 			print('Usuario no existe en nuestra Base de Datos')
+# 		else:
+# 			print('Usuario ID:{}\nNombre: {}\nApellido: {}\nDNI: {}\n'.format(usuario,nombre,apellido,dni))
+# 	except:
+# 		print('ID no válido')
+
+# def dniValido(dni):
+
+# 	while not(len(dni)<=8 and len(dni)>=7 and dni.isdigit()):
+# 		dni=input('Ingrese DNI válido\n')
+
+# 	return int(dni)
+
+# def ingresamosSocios():
+
+# 	nombre1=input('Ingrese Nombre\n')
+
+# 	if nombre1=="":
+# 		terminaCarga=True
+# 		socio=None
+# 	else:
+# 		nombre2=input('Ingree su segundo Nombre si lo desea\n') or None
+# 		apellido=input('Ingrese Apellido\n')
+# 		dni=dniValido(dni:=input('Ingrese su DNI\n'))
+		
+# 		socio=ingresoSocio(apellido,dni,nombre1,nombre2)
+# 		terminaCarga=False
+# 	return socio,terminaCarga 
+
+
+# def ingresoSocio(apellido,dni,nombre1,nombre2=None):
+# 	socio={}
+# 	socio['nombre1']=nombre1
+# 	socio['nombre2']=nombre2
+# 	socio['apellido']=apellido
+# 	socio['dni']=dni
+# 	socio['ID']=socio.get('apellido').lower()+str(socio.get('dni'))[:-5:-1]
+# 	return socio
+
+
+
+# def main():
+# 	print('Ingrese nuevo Socio\nPara terminar carga ingrese un nombre vacío')
+
+# 	listaSocios=[]
+
+# 	socio,terminaCarga=ingresamosSocios()
+
+# 	while terminaCarga==False:
+# 		listaSocios.append(socio)
+# 		socio,terminaCarga=ingresamosSocios()
+
+# 	cantidadDeSocios(listaSocios)
+
+# 	mostrarSocios=input('Que desea hacer?: Mostrar Todos los socios?: Y/N\n').lower() or 'n'
+# 	if mostrarSocios=='y':
+# 		mostrarTodosSocios(listaSocios)
+
+# 	user=input('Mostrar información de un Socio? Ingrese ID del Usuario\n')
+
+# 	if user=='':
+# 		print('Gracias por usar el programa')
+# 	else:
+# 		mostrarUsuario(listaSocios,user)
+
+# main()
+
+
+
+#8) Escribir una función que, dado un string, retorne la longitud de la palabra mas larga.
+# Se considera que las palabras están separadas por uno o más espacios.
+# También podría haber espacios al principio o al final del string pasado por parámetro. 
+
+
+# def limpiarString(string):
+# 	charsRemover='.!,:@?'
+# 	for char in charsRemover:
+# 		string=string.replace(char,' ')
+# 	return string
+
+# def setLista(string):
+	
+# 	string=limpiarString(string)
+
+# 	listaString=string.split(' ')
+# 	listaNueva=[]
+# 	for n in listaString:
+# 		if len(n)!=0:
+# 			listaNueva.append(n)
+# 	return listaNueva
+
+# def palabraLarga(lista):
+# 	maxPalabra=lista[0]
+# 	for n in lista:
+# 		if len(n)>len(maxPalabra):
+# 			maxPalabra=n
+# 	print('La palabra mas larga es: {}\nCantidad de caracteres: {}'.format(maxPalabra,len(maxPalabra)))
+
+
+# def main():
+# 	string=input('Inserte una frase\n') or None
+# 	if string==None:
+# 		print('No hay frase')
+# 	else:
+# 		palabraLarga(setLista(string))
+
+# main()
+
+# 9)
+# A) Solicitar al usuario que ingrese números, los cuales se guardarán en una lista.
+# Finalizar al ingresar el número 0, el cual no debe guardarse.
+# B) A continuación, solicitar al usuario que ingrese un número y,
+# si el número está en la lista, eliminar su primera ocurrencia.
+# Mostrar un mensaje si no es posible eliminar.
+# C) Recorrer la lista para imprimir la sumatoria de todos los elementos.
+# D) Solicitar al usuario otro número y
+# crear una lista con los elementos de la lista original que sean menores que el número dado.
+# Imprimir esta nueva lista, iterando por ella.
+
+
+# def numeroListaMenores(numero,lista):
+# 	# forma sencilla
+# 	# res=list(filter(lambda x: x<numero,lista))
+# 	# print('Valores menores a: {}'.format(numero))
+# 	# print(list(res))
+
+# 	# forma iterada
+# 	listaNueva=[]
+# 	for n in lista:
+# 		if n<numero:
+# 			listaNueva.append(n)
+# 	print('Valores menores a: {}'.format(numero))
+# 	print(listaNueva)
+
+
+# def sumatoriaLista(lista):
+# 	# Sumatoria de los valores internos
+# 	suma=0
+# 	for n in lista:
+# 		suma+=n
+
+# 	return suma
+
+# def existeNumero(numero,lista):
+# 	#Encontrar y eliminar # de la lista manteniendo lista original
+
+# 	listaFilrada=[]
+# 	listaOriginal=[]
+
+# 	for n in lista:
+# 		listaOriginal.append(n)
+
+# 	if numero in lista:
+# 		lista.remove(numero)
+# 	else:
+# 		print('No se encontró el número en la lista\nNo se puede eliminar')
+
+# 	for n in lista:
+# 		listaFilrada.append(n)
+
+# 	return listaFilrada,listaOriginal
+
+# import re
+
+# def notEmpty(numero):
+# # Permite valores positivos y negativos
+# 	user_format=re.compile(r'^\-?[0-9]*$')
+# 	valido=re.match(user_format,numero)
+
+# 	while valido==None:
+# 		numero=input('Ingrese # valido\n')
+# 		valido=re.match(user_format,numero)
+
+# 	return int(numero)
+
+# def ingresoNumeros():
+# 	print('Se hará una lista de numeros.\nCon el 0 se termina la carga de datos')
+
+# 	try:
+# 		num=notEmpty(num:=input('Ingrese numero\n')) or 0
+# 		listaNumeros=[]
+# 		while num!=0:
+# 			listaNumeros.append(num)
+# 			num=notEmpty(num:=input('Ingrese numero\n')) or 0
+
+# 		return listaNumeros
+# 	except:
+# 		print('Algo salió mal.')
+
+# def main():
+
+# 	# A
+# 	listaNumeros=ingresoNumeros()
+# 	print(listaNumeros)
+
+# 	# B
+# 	numero=notEmpty(numero:=input('Ingrese el # a buscar si existe:\n'))
+# 	listaOriginal,listaFilrada=existeNumero(numero,listaNumeros)
+# 	# C
+# 	sumatoriaLista(listaOriginal)
+# 	#D
+# 	numeroListaMenores(numero:=notEmpty(numero:=input('Lista con numeros menores a: *Ingrese valor max*\n')),listaOriginal)
+
+# main()
+
+
+
+# 10)
+# Ingresar notas de los alumnos en una lista. 
+# El fin de ingreso se da cuando se ingresa nota igual a 0. Calcular e informar:
+# a) Promedio de notas
+# b) Nota más alta
+# c) listado ordenado de nota (de menor a mayor)
+# d) Listado de notas que superen el promedio de notas.
+
+
+
+
+# import re
+# import os
+
+# def notEmpty(numero):
+# # Permite valores positivos
+# 	user_format=re.compile(r'^[0-9]*$')
+# 	valido=re.match(user_format,numero)
+
+# 	while valido==None:
+# 		numero=input('Ingrese # valido\n')
+# 		valido=re.match(user_format,numero)
+
+# 	return int(numero)
+
+
+# def ingresoNumeros():
+# 	print('Se hará una lista con las notas de los alumnos.\nCon el 0 se termina la carga de datos')
+# 	num=notEmpty(num:=input('Ingrese numero\n')) or 0
+# 	listaNumeros=[]
+# 	while num!=0:
+# 		listaNumeros.append(num)
+# 		num=notEmpty(num:=input('Ingrese numero\n')) or 0
+
+# 	return listaNumeros
+
+
+# def sumatoriaLista(lista):
+# 	# Sumatoria de los valores internos
+# 	suma=0
+# 	for n in lista:
+# 		suma+=n
+
+# 	return suma
+
+# def mxNumero(lista):
+# 	maximo=lista[0]
+# 	for i in lista:
+# 		if maximo<i:
+# 			maximo=i
+# 	return maximo
+
+# def numeroListaMenores(numero,lista):
+
+# 	res=list(filter(lambda x: x<numero,lista))
+# 	print('Valores menores a: {}'.format(numero))
+# 	print(list(res))
+
+
+# def main():
+# 	listaNumeros=ingresoNumeros()
+# 	suma=sumatoriaLista(listaNumeros)
+# 	promedio=round((suma/len(listaNumeros)),2)
+# 	maximo=mxNumero(listaNumeros)
+
+# 	listaNumerosOrdenado=sorted(listaNumeros)
+# 	index=1
+
+# 	os.system('clear')
+
+# 	for i in listaNumerosOrdenado:
+# 		print('Alumno #{} ==> Nota={}'.format(index,i))
+# 		index+=1
+
+# 	os.system('clear')	
+
+# 	numeroListaMenores(promedio,listaNumeros)
+# 	print('Gracias por usar el programa')
+
+# main()
+
+
+
+
+# 11) Diseñar un algoritmo que permita ingresar 10 números en una lista.
+# Se pide sumar los positivos, obtener el producto de los negativos y luego mostrar ambos resultados
+
+
+
+# import re
+# import os
+
+# def notEmpty(numero):
+# # Permite valores positivos y negativos
+# 	user_format=re.compile(r'^\-?[0-9]*$')
+# 	valido=re.match(user_format,numero)
+
+# 	while valido==None:
+# 		numero=input('Ingrese # valido\n')
+# 		valido=re.match(user_format,numero)
+
+# 	return int(numero)
+
+
+# def separarListas(listaNumeros):
+# 	listaPositivos=[]
+# 	listaNegativos=[]
+
+# 	for i in listaNumeros:
+# 		if i>=0:
+# 			listaPositivos.append(i)
+# 		else:
+# 			listaNegativos.append(i)
+# 	return listaPositivos,listaNegativos
+
+# def ingresoNumeros():
+
+# 	print('Se hará una lista de 10 numeros.\n')
+# 	listaNumeros=[]
+
+# 	for i in range(1,11):
+# 		print('Ingresar #: {}'.format(i))
+# 		num=notEmpty(num:=input())
+# 		listaNumeros.append(num)
+
+# 	return listaNumeros
+
+# def sumPositivos(lista):
+# 	if len(lista)==0:
+# 		print('Sumatoria de # positivos==> Total: 0')
+# 	else:
+# 		accu=0
+# 		for i in lista:
+# 			accu+=i
+# 		print('Sumatoria de # positivos==> Total: {}'.format(accu))
+
+# def productoNegativos(lista):
+# 	if len(lista)==0:
+# 		print('Producto de # negativos==> Total: 0')
+# 	else:
+# 		accu=1
+# 		for i in lista:
+# 			accu*=i
+# 		print('Producto de # negativos==> Total: {}'.format(accu))
+
+
+# def main():
+# 	listaNumeros=ingresoNumeros()
+# 	listaPositivos,listaNegativos=separarListas(listaNumeros)
+# 	os.system('clear')
+# 	print(listaPositivos)
+# 	sumPositivos(listaPositivos)
+# 	print(listaNegativos)
+
+# 	valor=productoNegativos(listaNegativos)
+
+
+# main()
+
+
+# 12)Escribir una función que reciba una lista de tuplas (Apellido, Nombre, Inicial_segundo_nombre)
+# y devuelva una lista de cadenas donde cada una contenga primero el nombre,
+# luego la inicial con un punto, y luego el apellido
+
+
+# def nombreSet(apellido,nombre,Inicial_segundo_nombre):
+
+# 	listaCadena=[]
+# 	for i in range(0,len(apellido)):
+# 		print('Persona # {}: {} {}. {}'.format(i,nombre[i],Inicial_segundo_nombre[i],apellido[i]))
+# 		value=nombre[i]+' '+Inicial_segundo_nombre[i]+'. '+apellido[i]
+# 		listaCadena.append(value)
+
+# def main():
+# 	apellido=('Oca','Torres','Miguel')
+# 	nombre=('Javier','Raul','Tomás')
+# 	Inicial_segundo_nombre=('F','V','L')
+# 	# apell=list(apellido)
+# 	# nom=list(nombre)
+# 	# ini=list(Inicial_segundo_nombre)
+
+# 	nombreSet(apellido,nombre,Inicial_segundo_nombre)
+
+# main()
+
+
+
+# 13) Suponer una lista con datos de las compras hechas por clientes de una empresa a lo largo de un mes,
+# la cual contiene tuplas con información de cada venta:
+# (cliente, díaDelMes, monto, domicilioDelCliente).
+# Ejemplo:
+# [
+# ("Nuria Costa", 5, 12780.78, "Calle Las Flores 355"), 
+# ("Jorge Russo", 7, 699, "Mirasol 218"),
+# ("Nuria Costa", 7, 532.90, "Calle Las Flores 355"),
+# ("Julián Rodriguez", 12, 5715.99, "La Mancha 761"),
+# ("Jorge Russo", 15, 958, "Mirasol 218")]
+
+# Escribir una función que reciba como parámetro una lista con el formato mencionado anteriormente 
+# y retorne los domicilios de cada cliente al cual se le debe enviar una factura de compra.
+# Notar que cada cliente puede haber hecho más de una compra en el mes,
+# por lo que la función debe retornar una estructura que contenga cada domicilio una sola vez.
+
+
+# lista=[
+# ("Nuria Costa", 5, 12780.78, "Calle Las Flores 355"), 
+# ("Jorge Russo", 7, 699, "Mirasol 218"),
+# ("Jorge Russo", 7, 700, "Mirasol 218"),
+# ("Jorge Russo", 7, 6, "Mirasol 218"),
+# ("Jorge Russo", 10, 99, "Mirasol 218"),
+# ("Nuria Costa", 7, 532.90, "Calle Las Flores 355"),
+# ("Julián Rodriguez", 12, 5715.99, "La Mancha 761"),
+# ("Jorge Russo", 15, 958, "Mirasol 218")]
+
+
+# def getDireccion(lista):
+	
+# 	listaOrdenada=sorted(lista)
+# 	listaNombres=[]
+# 	for i in listaOrdenada:
+# 		listaNombres.append((i[0],i[3]))
+
+# 	setNombres=set(listaNombres)
+
+
+# 	for nombre in list(setNombres):
+# 		print('Cliente: {}\nDireccion: {}'.format(nombre[0],nombre[1]))
+# 		for i in lista:
+# 			if i[0]==nombre[0]:
+# 				print('Fecha de compra:{} Monto: {}'.format(i[1],i[2]))
+# 		print('\n')
+
+# def main():
+# 	getDireccion(lista)
+
+# main()
+
+# getDireccion(lista)
+
+# 14)Escribir un programa que permita procesar 
+# datos de pasajeros de viaje en una lista de tuplas con la siguiente forma:
+# (nombre, dni, destino).
+# Ejemplo: 
+listaNombres=[
+("Manuel Juarez", 19823451, "Liverpool"),
+("Silvana Paredes", 22709128, "Buenos Aires"),
+("Rosa Ortiz", 15123978, "Glasgow"),
+("Maria Topa", 93940198, "Glasgow"),
+("Luciana Hernandez", 38981374, "Lisboa")] 
+
+# Además, en otra lista de tuplas se almacenan los datos de cada ciudad y 
+# el país al que pertenecen. 
+
+# Ejemplo:
+listaCiudad=[ 
+("Buenos Aires","Argentina"),
+("Glasgow","Escocia"), 
+("Lisboa", "Portugal"), 
+("Liverpool","Inglaterra"), 
+("Madrid","España")] 
+
+# Hacer un menú iterativo que permita al usuario realizar las siguientes operaciones:
+# -Agregar pasajeros a la lista de viajeros.x
+# -Agregar ciudades a la lista de ciudades.x
+# -Dado el DNI de un pasajero, ver a qué ciudad viaja.x
+
+# -Dada una ciudad, mostrar la cantidad de pasajeros que viajan a esa ciudad.
+# -Dado el DNI de un pasajero, ver a qué país viaja.
+# -Dado un país, mostrar cuántos pasajeros viajan a ese país.
+# -Salir del programa.
