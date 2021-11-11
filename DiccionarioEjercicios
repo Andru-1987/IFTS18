@@ -1,0 +1,159 @@
+# 1)Escribir un programa que procese cadenas 
+# de texto ingresados por el usuario.
+# La lectura finaliza cuando se haya ingresado una cadena vacía. 
+# Al finalizar, informar la cantidad total de ocurrencias de cada palabra,
+# en todas las cadenas ingresadas. Ejemplo: "que" = 5, “tal” = 3.
+# ¿Cómo se podrían informar además las ocurrencias de espacio
+
+
+# def cleanString(frase):
+# 	charsToRem=".,@!?'"
+
+# 	for chars in charsToRem:
+# 		frase=frase.replace(chars," ")
+
+# 	return frase
+
+# def contadorEmptyScpaces(frase):
+# 	# Contador clasico
+# 	cont=0
+# 	for palabras in frase:
+# 		if palabras==" ":
+# 			cont+=1
+# 	print('Cantidad de espacios en la frase: {}'.format(cont))
+# 	return cont
+
+# def cleanEmptySpaces(frase):
+# # 	Limpia la frase y genera dos objetos:
+# # 	a) lista con las palabras sin los espacios
+# # 	b) set de palabras sin repeticiones
+
+# 	listaFrase=frase.split(' ')
+
+# 	for element in listaFrase:
+# 		if len(element)==0:
+# 			listaFrase.remove(element)
+
+
+# 	setFrase=set(listaFrase)
+# 	setFrase=set(sorted(setFrase))
+	
+
+# 	return listaFrase,setFrase
+
+# def dicPalabras(listaFrase,setFrase):
+# 	# usando count()
+
+# 	dictDePalabras={}
+
+# 	for n in setFrase:
+# 		valor=listaFrase.count(n)
+# 		dictDePalabras[n]=valor
+
+# 	return dictDePalabras
+
+# import os
+
+# def main():
+
+# 	userInput=input('Ingrese frase a analizar\n')
+# 	a,b=cleanEmptySpaces(cleanString(userInput))
+# 	objetoPalabras=dicPalabras(a,b)
+
+# 	cont=contadorVacios=contadorEmptyScpaces(userInput)
+# 	objetoPalabras['espacios']=cont
+
+# 	os.system('clear')
+
+# 	for n in objetoPalabras:
+# 		valor=objetoPalabras.get(n)
+# 		print('{} = {}'.format(n,valor))
+
+
+# main()
+
+
+
+
+
+# 2)Crea un diccionario donde la clave sea el 
+# nombre del usuario y el valor sea el teléfono (no es necesario validar).
+# Validar que no se puedan ingresar nombres repetidos.
+
+# def validarUnico(key,baseDatos):
+# # Validar de que sea único
+# 	boolean=True
+
+# 	if key not in baseDatos:
+# 		boolean=True
+# 	else:
+# 		boolean=False
+# 	return boolean
+
+# def insertarUsuario(usuario,phone,baseDatos):
+# 	baseDatos[usuario]=phone
+# 	return baseDatos
+
+
+# def main():
+# 	baseDatos={'Anderson':4477}
+
+# 	name=input('Ingrese el nombre del usuario a insertar\n')
+# 	boolean=validarUnico(name,baseDatos)
+# 	if boolean:
+# 		phone=input('Ingrese # de telefono\n')
+# 		baseDatos=insertarUsuario(name,phone,baseDatos)
+# 		print('El usuario: {} Tel:{}'.format(name,phone))
+
+# 	else:
+# 		phone=None
+# 		print('El usuario ya se encuentra registrado')
+
+
+# main()
+
+
+
+# 3)Escribir una función que reciba una 
+# lista de tuplas (País, Ciudad),
+# y que devuelva un diccionario en donde las claves sean los países, 
+# y los valores una lista con las ciudades.
+# Por ejemplo:
+# 	lista = [ 
+# 	('Argentina', 'Cordoba'),
+# 	('Argentina', 'Corrientes'),
+# 	('Chile', 'Santiago')]
+
+
+# def transDic(lista):
+# 	diccionario={}
+# 	paises=[]
+
+# 	for tuplaItem in lista:
+# 		paises.append(tuplaItem[0])
+# 	setPaises=set(paises)
+
+
+# 	for pais in setPaises:
+# 		ciudades=[]
+
+# 		for item in lista:
+# 			if item[0]==pais:
+# 				ciudades.append(item[1])
+
+# 		diccionario[pais]=ciudades
+
+
+
+# 	print(diccionario)
+
+
+# lista = [ 
+# ('Argentina', 'Cordoba'),
+# ('Argentina', 'Corrientes'),
+# ('Chile', 'Santiago'),
+# ('Chile', 'Valparaiso'),
+# ]
+
+
+# transDic(lista)
