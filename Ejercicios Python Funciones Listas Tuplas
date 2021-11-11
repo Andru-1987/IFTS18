@@ -745,24 +745,11 @@
 # 14)Escribir un programa que permita procesar 
 # datos de pasajeros de viaje en una lista de tuplas con la siguiente forma:
 # (nombre, dni, destino).
-# Ejemplo: 
-listaNombres=[
-("Manuel Juarez", 19823451, "Liverpool"),
-("Silvana Paredes", 22709128, "Buenos Aires"),
-("Rosa Ortiz", 15123978, "Glasgow"),
-("Maria Topa", 93940198, "Glasgow"),
-("Luciana Hernandez", 38981374, "Lisboa")] 
 
 # Además, en otra lista de tuplas se almacenan los datos de cada ciudad y 
 # el país al que pertenecen. 
 
-# Ejemplo:
-listaCiudad=[ 
-("Buenos Aires","Argentina"),
-("Glasgow","Escocia"), 
-("Lisboa", "Portugal"), 
-("Liverpool","Inglaterra"), 
-("Madrid","España")] 
+
 
 # Hacer un menú iterativo que permita al usuario realizar las siguientes operaciones:
 # -Agregar pasajeros a la lista de viajeros.x
@@ -773,3 +760,183 @@ listaCiudad=[
 # -Dado el DNI de un pasajero, ver a qué país viaja.
 # -Dado un país, mostrar cuántos pasajeros viajan a ese país.
 # -Salir del programa.
+
+
+
+# def demostrarListaPasajeros(lista):
+# # Mostrar pasajeros a una lista de vijeros
+# 	print('Lista de viajeros')
+# 	for i in lista:
+# 		nombre=list(i)[0]
+# 		dni=list(i)[1]
+# 		destino=list(i)[2]
+
+# 		print('Nombre: {} DNI: {}'.format(nombre,dni))
+
+# def agregarPasajeros(nombre,dni,destino,lista):
+# # Agregar pasajeros
+# 	tuplaPasajero=(nombre,int(dni),destino:=destino.capitalize())
+# 	lista.append(tuplaPasajero)
+	
+# 	return lista
+
+# def agregarCiudad(ciudad,pais,lista):
+
+# 	tuplaCiudad=(ciudad:=ciudad.capitalize(),pais:=pais.capitalize())
+# 	lista.append(tuplaCiudad)
+
+# 	return lista
+
+# def ciudadViaja(lista,DNI):
+# # Ciudad que viaja usando el DNI de busqueda
+# 	for i in lista:
+# 		if i[1]==int(DNI):
+# 			print('Ciudad que viaja: {}'.format(i[2]))
+# 	print()
+
+# def pasajerosViajanCiudad(lista,ciudad):
+# 	# Pasajeros que viajan a una ciudad
+# 	accu=0
+# 	for i in lista:
+# 		if i[2]==ciudad.capitalize():
+# 			accu+=1
+# 	print('Ciudad {} son: {} pasajeros'.format(ciudad.capitalize(),accu))
+
+# def ciudadViajan(listaPais,listaNombres,pais):
+# 	pais=pais.capitalize()
+# 	listaCiudadesDelPais=[]
+
+# 	for n in listaPais:
+# 		if n[1]==pais:
+# 			listaCiudadesDelPais.append(n[0])
+
+# 	accuPasajeros=0
+
+# 	for ciudad in listaCiudadesDelPais:
+# 		for pasajero in listaNombres:
+# 			if  pasajero[2]==ciudad:
+# 				accuPasajeros+=1
+# 	print('Cantidad de pasajeros: {}'.format(accuPasajeros))
+
+
+
+# def paisViajaPorDni(listaCiudad,listaNombres,DNI):
+# 	dni=int(DNI)
+	
+# 	ciudad=None
+# 	pais=None
+
+# 	for n in listaNombres:
+# 		if n[1]==dni:
+# 			ciudad=n[2]
+
+# 	for ciudades in listaCiudad:
+# 		if ciudades[0]==ciudad:
+# 			pais=ciudades[1]
+
+# 	if ciudad==None:
+# 		print('DNI no se encuentra en nuestra base de Datos')
+# 	else:
+# 		print('Pais que viaja: {}'.format(pais))
+
+
+# import re
+# import os
+
+# def notEmpty(numero):
+# # Permite valores positivos y negativos
+# 	user_format=re.compile(r'^[1-7]*$')
+# 	valido=re.match(user_format,numero)
+
+# 	while valido==None:
+# 		numero=input('Ingrese # valido\n')
+# 		valido=re.match(user_format,numero)
+
+# 	return int(numero)
+
+# def main():
+# 	listaNombres=[
+# 	("Manuel Juarez", 19823451, "Liverpool"),
+# 	("Silvana Paredes", 22709128, "Buenos Aires"),
+# 	("Rosa Ortiz", 15123978, "Glasgow"),
+# 	("Maria Topa", 93940198, "Jujuy"),
+# 	("Maria Juana", 93940199, "Jujuy"),
+# 	("Luciana Hernandez", 38981374, "Lisboa")] 
+	
+# 	listaCiudad=[ 
+# 	("Buenos Aires","Argentina"),
+# 	("Jujuy","Argentina"),
+# 	("Glasgow","Escocia"), 
+# 	("Lisboa", "Portugal"), 
+# 	("Liverpool","Inglaterra"), 
+# 	("Madrid","España")] 
+
+
+# 	opcion=notEmpty(opcion:=input('=>Ingrese 1\nAgregar pasajeros a la lista de viajeros.\n=>Ingrese 2\nAgregar ciudades a la lista de ciudades.\n=>Ingrese 3\nDado el DNI de un pasajero, ver a qué ciudad viaja.\n=>Ingrese 4\nDada una ciudad, mostrar la cantidad de pasajeros que viajan a esa ciudad.\n=>Ingrese 5\nDado el DNI de un pasajero, ver a qué país viaja.\n=>Ingrese 6\nDado un país, mostrar cuántos pasajeros viajan a ese país.\n=>Ingrese 7\nPara salir del programa\n'))
+	 	
+
+# 	while opcion!=7:
+# 		os.system('clear')
+
+# 		if opcion==1:
+			
+# 			# agreagar viajero
+# 			nombre_=input("Ingrese nombre\n")
+# 			apellido_=input("Ingrese apellido\n")
+# 			nombre=nombre_.capitalize()+' '+apellido_.capitalize()
+# 			dni=input("Ingrese # DNI\n")
+# 			destino=input("Ingrese destino\n")
+# 			listaNombres=agregarPasajeros(nombre,dni,destino,listaNombres)
+# 			for i in listaNombres:
+# 				print(i)
+
+# 		elif opcion==2:
+			
+# 			# agregar ciudad
+# 			ciudad=input("Ingrese la ciudad\n")
+# 			pais=input("Ingrese el pais\n")
+# 			listaCiudad=agregarCiudad(ciudad,pais,listaCiudad)
+
+# 			for i in listaCiudad:
+# 				print(i)
+
+# 		elif opcion==3:
+			
+# 			# ciudad que viaja por el dni
+# 			DNI=input("Ingrese # DNI\n")
+# 			ciudadViaja(listaNombres,DNI)
+
+# 		elif opcion==4:
+			
+# 			# dada ciudad cantidad de viajeros
+# 			ciudad=input('Ingrese ciudad\n')
+# 			pasajerosViajanCiudad(listaNombres,ciudad)
+
+# 		elif opcion==5:
+			
+# 			# dado DNI, muestra pais que viaja
+# 			dni=input('Ingrese el DNI\n')
+# 			paisViajaPorDni(listaCiudad,listaNombres,dni)
+
+# 		elif opcion==6:
+			
+# 			# dado el pais, cuantos viajan a ese pais
+# 			pais=input("Ingrese pais\n")
+# 			ciudadViajan(listaCiudad,listaNombres,pais)
+			
+		
+# 		else:
+# 			opcion=None
+			
+
+# 		opcion=notEmpty(opcion:=input('=>Ingrese 1\nAgregar pasajeros a la lista de viajeros.\n=>Ingrese 2\nAgregar ciudades a la lista de ciudades.\n=>Ingrese 3\nDado el DNI de un pasajero, ver a qué ciudad viaja.\n=>Ingrese 4\nDada una ciudad, mostrar la cantidad de pasajeros que viajan a esa ciudad.\n=>Ingrese 5\nDado el DNI de un pasajero, ver a qué país viaja.\n=>Ingrese 6\nDado un país, mostrar cuántos pasajeros viajan a ese país.\n=>Ingrese 7\nPara salir del programa\n'))
+
+
+# main()
+
+
+
+
+
+
+
