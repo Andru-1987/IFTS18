@@ -157,3 +157,153 @@
 
 
 # transDic(lista)
+
+
+
+# # 4)Crear un programa para gestionar datos de los socios de un club,
+# # permitiendo:
+# # a) Cargar información de los socios en un diccionario
+# # para acceder por número de socio.
+# # Los datos por almacenar son:
+# # número, nombre y apellido, fecha de ingreso (ddmmaaaa),
+# # cuota al día (s/n). 
+# # b) Informar cantidad de socios del club.
+# # c) Solicitar al usuario el número de un socio
+# # y registrar que ha pagado todas las cuotas adeudadas.
+# # d) Solicitar el nombre y apellido de un socio y
+# # darlo de baja (eliminarlo del listado).
+# # e) Imprimir el listado de socios completo.
+
+
+# def generarID(baseDatosSocios):
+# 	# disponibilidad de idAutoincremental
+# 	idDisponible=max(baseDatosSocios)
+# 	return idDisponible+1
+
+# def ingresoSocio(baseDatosSocios):
+# 	# a) cargar Informacion de socio
+# 	from datetime import datetime
+# 	fechaHoy=datetime.today().strftime('%d%m%Y')
+
+# 	# Ingreso de datos y datos por default
+# 	idSocio=generarID(baseDatosSocios)
+# 	nombre=input('Ingrese el nombre del Socio\n').lower().capitalize()
+# 	apellido=input('Ingrese el apellido del socio\n').lower().capitalize()
+# 	fechaIngreso=input('Fecha de Ingreso formato: ddmmaaaa\nDefault la fecha de hoy') or fechaHoy
+	
+# 	cuotasPagasAlDia=input('Cuotas al día? Ingrese \'n\' si no está al día\nDefault es \'s\'').lower() or 's'
+# 	setCuotas=False
+# 	if cuotasPagasAlDia=='s':
+# 		setCuotas=True
+# 	else:
+# 		setCuotas=False
+
+# 	listaSocio=[nombre,apellido,fechaIngreso,setCuotas]
+
+# 	baseDatosSocios[idSocio]=listaSocio
+# 	return baseDatosSocios
+
+# def cantidadSocios(baseDatosSocios):
+# 	#b) retorna la cantidad total de Socios
+# 	cont=0
+# 	for i in baseDatosSocios:
+# 		cont+=1
+# 	print('La cantidad de socios actuales en el club: {}'.format(cont))
+
+# def registroCuotas(baseDatosSocios): 
+# 	#c)	Solicitar al usuario el número de un socio
+# 	# y registrar que ha pagado todas las cuotas adeudadas.
+# 	idSocio=int(input('Ingrese el idSocio:'))
+# 	cuotasAlDia=baseDatosSocios.get(idSocio)[3]
+# 	if cuotasAlDia==True:
+# 		print('El Socio tiene las cuotas a la fecha totalmente pagas')
+# 	else:
+# 		seguimos=input('El cliente cuenta con cuotas impagas.\nDesea actualizar su estado?\nIngrese cualquier tecla para Actualizar su estado a Pago\nPor default es seguir en mora.\n').lower() or 'n'
+# 		if seguimos=='n':
+# 			print('Socio seguira moroso')
+# 		else:
+# 			baseDatosSocios.get(idSocio)[3]=True
+
+# 	return baseDatosSocios
+
+# def busquedaSocio(baseDatosSocios):
+# 	nombre=input('Ingrese nombre del usuario\n').lower().capitalize()
+# 	apellido=input('Ingrese nombre del usuario\n').lower().capitalize()
+
+# 	idSocio=None
+
+# 	for key,value in baseDatosSocios.items():
+
+# 		if value[0]==nombre and value[1]==apellido:
+# 			idSocio=key
+	
+# 	return idSocio
+
+# def darBajaSocio(baseDatosSocios):
+# 	# dar de baja al socio pedido
+# 	idSocio=busquedaSocio(baseDatosSocios)
+# 	if idSocio==None:
+# 		print('El usuario no existe')
+# 	else:
+# 		del baseDatosSocios[idSocio]
+
+# 	return baseDatosSocios
+
+# def displaSocios(baseDatosSocios):
+# 	# muestra todos los socio
+
+# 	for key in sorted(baseDatosSocios):
+# 		nombre=baseDatosSocios[key][0]
+# 		apellido=baseDatosSocios[key][1]
+# 		print('Usuario # {}\n  Nombre Completo: {}, {}'.format(key,apellido,nombre))
+
+# def notEmpty(numero):
+
+# 	user_format=re.compile(r'^[1-6]*$')
+# 	valido=re.match(user_format,numero)
+
+# 	while valido==None:
+# 		numero=input('Ingrese # valido\n')
+# 		valido=re.match(user_format,numero)
+
+# 	return int(numero)
+
+# import os
+# import re
+
+# def main():
+# 	baseDatosSocios= {
+# 		# idSocio:[nombre,apellido,fecha=(ddmmaaaa),cuotas=boolean]
+# 		3:['Anderson','Oca',19102020,True],
+# 		2:['Mateo','Roca',19102019,False]
+# 	}
+
+# 	print('Opciones\n Ingresar #1. Ingresar socios.\n Ingresar #2 Informe cantidad de socios en el club.')
+# 	print(' Ingresar #3. Actualiar Status de cuotas de socio. \n Ingresar #4. Dar de baja a Socio.\n Ingresar #5. Imprimir lista de socios. Ingresar #5\n Ingresar #6. Salir del Programa.\n')
+# 	userInput=notEmpty(userInput:=input('Ingrese una opcion:\n'))
+# 	os.system('clear')
+	
+# 	while userInput!=6:
+# 		os.system('clear')
+# 		print('Opciones\n Ingresar #1. Ingresar socios.\n Ingresar #2 Informe cantidad de socios en el club.')
+# 		print(' Ingresar #3. Actualiar Status de cuotas de socio. \n Ingresar # 4. Dar de baja a Socio.\n Ingresar #5. Imprimir lista de socios. Ingresar #5\n Ingresar #6. Salir del Programa.\n')
+	
+# 		if userInput==1:
+# 			baseDatosSocios=ingresoSocio(baseDatosSocios)
+# 		elif userInput==2:
+# 			cantidadSocios(baseDatosSocios)
+# 		elif userInput==3:
+# 			registroCuotas(baseDatosSocios)
+# 		elif userInput==4:
+# 			darBajaSocio(baseDatosSocios)
+# 		elif userInput==5:
+# 			displaSocios(baseDatosSocios)
+# 		else:
+# 			userInput=6
+# 			print('Gracias por usar el programa')
+
+		
+# 		userInput=notEmpty(userInput:=input('Ingrese una opcion:\n'))
+
+# main()
+
