@@ -307,3 +307,163 @@
 
 # main()
 
+
+
+
+# 5) Escribir un programa que gestione las 
+# facturas pendientes de cobro de una empresa. 
+# Las facturas se almacenarán en un diccionario donde la clave de cada factura
+# será el número de factura y el valor de la factura. 
+
+# El programa debe preguntar al usuario si quiere añadir una nueva factura,
+# pagar una existente o terminar.
+
+	# Si desea añadir una nueva factura se preguntará por el número de factura y 
+	# su costo y se añadirá al diccionario. 
+
+	# Si se desea pagar una factura se preguntará 
+	# por el número de factura y se eliminará del diccionario. 
+
+	# Después de cada operación el programa debe mostrar 
+	# por pantalla la cantidad cobrada hasta el momento y la cantidad pendiente de cobro.
+
+
+# def cantidadGeneral(invoiceDB,invoiceDBPagados):
+# 	totalPagados=0
+# 	totalAdeudado=0
+
+# 	for factura,valor in invoiceDB.items():
+# 		totalAdeudado+=valor.get('monto')
+
+# 	for factura,valor in invoiceDBPagados.items():
+# 		totalPagados+=valor.get('monto')
+
+# 	print('Valor total pagados: ${}\nValor total adeudado: ${}'.format(totalPagados,totalAdeudado))
+
+# def validarNum(numero):
+# 	import re
+
+# 	user_format=re.compile(r'^[0-9]*$')
+# 	valido=re.match(user_format,numero)
+
+# 	while valido==None:
+# 		numero=input('Numero NO valido\n')
+# 		valido=re.match(user_format,numero)
+
+# 	return int(numero)
+
+# def validarInvoice(invoice):
+# 	import re
+
+# 	user_format=re.compile(r'^[A-Z-0-9]*$')
+# 	valido=re.match(user_format,invoice)
+
+# 	while valido==None:
+# 		invoice=input('La factura debe ser un valor AlphaNumérico con Letras en Mayúsculas\n')
+# 		valido=re.match(user_format,invoice)
+
+# 	return invoice
+
+# def addInvoice(invoiceDB):
+# 	print('Agregar Factura')
+	
+# 	# agrego datos a la factura
+
+# 	numInvoice=validarInvoice(numInvoice:=input('Ingrese el número de factura\n'))
+# 	amount=validarNum(amount:=input('Ingrese el monto de la factura\n'))
+	
+# 	listaData=[numInvoice,amount,False]
+# 	listaValoresData=['factura','monto','pagado']
+# 	dataInvoice={}
+
+# 	idInvoice=str(numInvoice)+'-'+str(amount)
+
+# 	for n in listaValoresData:
+# 		index=listaValoresData.index(n)
+# 		dataInvoice[n]=listaData[index]
+
+
+# 	invoiceDB[idInvoice]=dataInvoice
+
+# 	return invoiceDB
+
+# def pagarFactura(invoiceDB):
+# 	print('Pagar factura')
+# 	numInvoice=validarInvoice(numInvoice:=input('Ingrese el número de factura\n'))
+# 	encontrado=False
+
+# 	for n,value in invoiceDB.items():
+
+# 		if value.get('factura')==numInvoice:
+# 			encontrado=True
+# 			print('Desea modificar el estado de la factura?\n')
+# 			userInput=input('Ingrese \"n\" si no desea modificarla\nPor default se cambiará la factura\n').lower() or 's'
+
+# 			if userInput=='s':
+# 				value['pagado']=True
+# 			else:
+# 				value['pagado']=False
+
+# 	if encontrado==False:
+# 		print('Factura {} no encontrada'.format(numInvoice))
+	
+# 	return invoiceDB
+
+# def invoicePagados(invoiceDB,invoiceDBPagados):
+
+# 	encontrado=False
+# 	# Recorro y cambio de database a facturas pagadas
+# 	for facturas,data in invoiceDB.items():
+# 		# Esta parte es por si existiera alguna factura en false dando vuelta.
+# 		if data.get('pagado')==True:
+# 			encontrado=True
+# 			invoiceDBPagados[facturas]=data
+
+# 	if encontrado==True:	
+# 		# elimino la factura desde el origina;l
+# 		for facturas in invoiceDBPagados:
+# 			if facturas in invoiceDB:
+# 				del invoiceDB[facturas]
+
+
+# 	return invoiceDB,invoiceDBPagados
+
+# def mostrarInvoices(invoiceDB):
+# 	for n in invoiceDB:
+# 		print('Facturas pendientes a pago: {}'.format(n))
+
+# def main():
+
+# 	import os
+
+# 	invoiceDB={ '333-355':{'factura':'333', 'monto':355,'pagado':False},
+# 				'839-444':{'factura':'839', 'monto':645,'pagado':False}
+# 	}
+
+# 	invoiceDBPagados={}
+
+# 	print('Programa de facturación.\n')
+
+# 	userInput=input('Ingrese opcion:\n Ingrese #1. Para añadir factura\n Ingrese #2. Pagar la factura pedida.\n Ingrese \"n\" para dar fin al programa\n')
+# 	os.system('clear')
+
+# 	while userInput!='n':
+# 		os.system('clear')
+# 		cantidadGeneral(invoiceDB,invoiceDBPagados)
+
+# 		if userInput=='1':
+# 		# 	# Agregar factura
+# 			invoiceDB=addInvoice(invoiceDB)
+
+# 		elif userInput=='2':
+# 		# 	# Borra factura
+# 			mostrarInvoices(invoiceDB)
+# 			invoiceDB=pagarFactura(invoiceDB)
+# 			print('')
+# 			invoiceDB,invoiceDBPagados=invoicePagados(invoiceDB,invoiceDBPagados)
+# 		# else:
+
+# 		userInput=input('Ingrese opcion:\n Ingrese #1. Para añadir factura\n Ingrese #2. Pagar la factura pedida.\n Ingrese \"n\" para dar fin al programa\n')
+
+
+# main()
