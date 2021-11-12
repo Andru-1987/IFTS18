@@ -467,3 +467,135 @@
 
 
 # main()
+
+
+# 6)Escribir un programa que permita gestionar
+# la base de datos de clientes de una empresa. 
+# Los clientes se guardarán en un diccionario
+# en el que la clave de cada cliente será su ID,
+# y el valor será otro diccionario con 
+# los datos del cliente (nombre, dirección, teléfono, correo, preferente),
+# donde preferente tendrá el valor True si se trata de un cliente preferente. El programa debe preguntar al usuario por una opción del siguiente menú: (1) Añadir cliente, (2) Eliminar cliente, (3) Mostrar cliente, (4) Listar todos los clientes, (5) Listar clientes preferentes, (6) Terminar. En función de la opción elegida el programa tendrá que hacer lo siguiente:
+
+# a)Preguntar los datos del cliente,
+# crear un diccionario con los datos y añadirlo a la base de datos.x
+
+# b)Preguntar por el ID del cliente 
+# y eliminar sus datos de la base de datos.x
+
+# c)Preguntar por el ID del cliente y mostrar sus datos.x
+
+# d)Mostrar lista de todos los clientes de la base datos con su ID y nombre.x
+
+# e)Mostrar la lista de clientes preferentes de la base de datos
+# con su ID y nombre.x
+
+
+
+# def validarID(clienteDB):
+# 	accu=0
+# 	for i in clienteDB:
+# 		accu+=1
+
+# 	return accu+1
+# def addCliente(clienteDB):
+# 	print('Agregar cliente')
+	
+# 	# agrego datos a la factura
+
+# 	idCliente=validarID(clienteDB)
+
+# 	nombre=input('Ingrese nombre\n').lower().capitalize() or None
+# 	direccion=input('Ingrese direccion\n').lower() or None
+# 	telefono=input('Ingrese telefono\n') or None
+# 	correo=input('Ingrese correo\nPor default quedará en vacio\n').lower() or None
+# 	preferente=input('Cliente es preferente? \"s/n\" \n') or False
+
+# 	if preferente=='s':
+# 		preferente=True
+
+# 	elif preferente=='n':
+# 		preferente=False
+
+# 	else:
+# 		preferente=False
+
+# 	listaValores=[nombre,direccion,telefono,correo,preferente]
+# 	listaData=['nombre','direccion','telefono','correo','preferente']
+
+# 	clienteData={}
+
+# 	for n in listaData:
+# 		index=listaData.index(n)
+
+# 		clienteData[n]=listaValores[index]
+
+# 	# Se agrega a la base de datos
+# 	clienteDB[idCliente]=clienteData
+
+# 	return clienteDB
+# def mostrarDatos(clienteDB):
+# 	idInput=int(input('Ingrese ID del cliente.\n'))
+
+# 	if idInput in clienteDB:
+# 		print('El cliente: {}'.format(clienteDB[idInput].get('nombre')))
+# 		for dato,valor in clienteDB[idInput].items():
+
+# 			if valor==True:
+# 				print('Es preferente')
+
+# 			elif valor==False:
+# 				print('No es preferente')
+
+# 			else:
+# 				print('Su {}: {}'.format(dato,valor))
+# 	else:
+# 		print('El cliente no se encuentra\n')
+# def borrarCliente(clienteDB):
+# 	idInput=int(input('Ingrese ID del cliente.\n'))
+
+# 	if idInput in clienteDB:
+# 		print('Se borrará los datos del cliente: {}'.format(clienteDB[idInput].get('nombre')))
+# 		clienteDB[idInput]=None
+# 	else:
+# 		print('Cliente no existente')
+
+# 	return clienteDB
+# def mostrarAll(clienteDB):
+# 	for cliente,datos in clienteDB.items():
+# 		print('Cliente ID# {}: {}'.format(cliente,datos.get('nombre')))
+# def mostrarPreferentes(clienteDB):
+# 	for cliente,datos in clienteDB.items():
+# 		if datos.get('preferente')==True:
+# 			print('Cliente Preferente ID# {}: {}'.format(datos.get('nombre'),cliente))
+
+# def main():
+# 	import os
+
+# 	# Archivo de base de datos de los clientes
+# 	clienteDB={}
+
+# 	print('Gestión de Clientes:')
+# 	print('Que desea hacer?')
+# 	userInput=input('Presione #1 si desea agregar clientes\nPresione #2 si desea eliminar a un cliente\nPresione #3 si desea mostrar todos los clientes\nPresione #4 si desea mostrar los clientes preferentes\nPresione #5 si desea mostrar la información de un cliente\nPresiona #6 para salir del programa')
+
+# 	while userInput!='6':
+# 		os.system('clear')
+
+# 		if userInput=='1':
+# 			clienteDB=addCliente(clienteDB)
+# 		elif userInput=='2':
+# 			clienteDB=borrarCliente(clienteDB)
+# 		elif userInput=='3':
+# 			mostrarAll(clienteDB)
+# 		elif userInput=='4':
+# 			mostrarPreferentes(clienteDB)
+# 		elif userInput=='5':
+# 			mostrarDatos(clienteDB)
+
+# 		else:
+# 			print('No entendí que desea hacer.\n')
+
+# 		userInput=input('Presione #1 si desea agregar clientes\nPresione #2 si desea eliminar a un cliente\nPresione #3 si desea mostrar todos los clientes\nPresione #4 si desea mostrar los clientes preferentes\nPresione #5 si desea mostrar la información de un cliente\nPresiona #6 para salir del programa')
+# main()
+
