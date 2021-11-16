@@ -1,0 +1,241 @@
+# Trabajo Practico #2 - Anderson Ocaña
+
+#Se tienen los siguientes datos
+# de cada uno de los empleados de una empresa:
+
+#     DNI
+#     Nombre y apellido
+#  Sucursal
+#  Edad
+#  Sueldo básico (en $)
+#  Premios (en $)
+#  Descuentos (en %)
+
+# Se pide un programa que realice los siguiente:
+
+# 1)Carga de todos los datos por teclado.
+# Se desconoce la cantidad de empleados.
+# El fin de la carga se producirá con DNI=999.
+# Utilizar el concepto de lista de diccionarios.
+# 2) Con los datos ingresados,
+# generar un nuevo registro en cada diccionario para obtener el
+# sueldo neto de cada empleado.
+# El mismo se obtiene sumando al básico los premios, y
+# restando los descuentos 
+# (recuerde que los descuentos están en % y no se pueden sumar
+# directamente). Ej: sueldo básico + premios – (% descuento).
+# 3) Mostrar el empleado con mayor sueldo neto y el peor.
+# 4) Mostrar cuantos empleados se cargaron.
+# 5) Mostrar el porcentaje de empleados mayores de 40 años.
+# 6) Informar la sucursal en la que trabaja
+# el empleado que más premios haya recibido
+# 7) Generar un segundo listado,
+# solo de los empleados cuyo sueldo básico sea INFERIOR
+# al sueldo básico promedio.
+
+
+def notEmpty(numero):
+    import re
+
+    # Permite valores positivos
+    user_format=re.compile(r'^[0-9]*$')
+    valido=re.match(user_format,numero)
+
+    while valido==None:
+        numero=input('Ingrese DNI valido\n')
+        valido=re.match(user_format,numero)
+
+    return int(numero)
+
+def opcion(userInput):
+    import re
+
+    # Permite valores positivos
+    user_format=re.compile(r'^[0-8]*$')
+    valido=re.match(user_format,userInput)
+
+    while valido==None:
+        userInput=input('Opcion no es válida\n')
+        valido=re.match(user_format,userInput)
+
+    return userInput
+
+def letras(string):
+    import re
+
+    # Permite valores positivos
+    user_format=re.compile(r'^[A-z]*$')
+    valido=re.match(user_format,string)
+
+    while valido==None:
+      string=input('Lo ingresado no es válido\n')
+      valido=re.match(user_format,string)
+
+    return string
+
+def cargaEmpleado(listaEmpleado):
+    # Carga de empleados
+    # Punto 1
+    import os
+    while True:
+        os.system('clear')
+        dni=notEmpty(input('Ingrese DNI del empleado: \nRecuerde que para terminar la carga se usa el DNI#999\n'))
+        if dni==999:
+            break
+        empleado={}
+        
+        empleado['dni']=dni
+        empleado['nombre']=letras(input('Ingrese nombre del empleado: ').lower().capitalize())
+        empleado['apellido']=letras(input('Ingrese apellido del empleado: ').lower().capitalize())
+        empleado['edad']=notEmpty(input('Ingrese la edad del empleado: '))
+        empleado['sucursal']=input('Ingrese Sucursal: ').lower().capitalize()
+        empleado['sueldoBase']=notEmpty(input('Ingrese sueldo base en $: '))
+        empleado['premio']=notEmpty(input('Ingrese premios en $: '))
+        empleado['descuento']=notEmpty(input('Ingrese descuento en %: '))
+
+        # agregando a la lista de empleados
+
+        listaEmpleado.append(empleado)
+
+    return listaEmpleado
+
+def printEmpleados(listaEmpleado):
+    # Imprime el sueldo neto de los empleados
+    # Punto 2
+
+    for empleado in listaEmpleado:
+        salarioNeto=round(float((empleado['sueldoBase']+empleado['premio'])*(1-empleado['descuento']/100)),2)
+        nombre=empleado.get('nombre')
+        apellido=empleado.get('apellido')
+        dni=empleado.get('dni')
+        print(f'Salario Neto de: {apellido}, {nombre} con DNI:{dni} es de ${salarioNeto}')
+
+def minMaxEmpleado(listaEmpleado):
+    # Punto 3
+
+    salarioNetoInicial=float((listaEmpleado[0]['sueldoBase']+listaEmpleado[0]['premio'])*(1-listaEmpleado[0]['descuento']/100))
+
+
+    salarioNetoMax=salarioNetoInicial
+    indexEmpleadoMax=0
+    salarioNetoMin=salarioNetoInicial
+    indexEmpleadoMin=0
+
+
+    for empleado in listaEmpleado:
+
+        salarioNeto=round(float((empleado['sueldoBase']+empleado['premio'])*(1-empleado['descuento']/100)),2)
+        
+        if salarioNeto>salarioNetoMax:
+            salarioNetoMax=salarioNeto
+            indexEmpleadoMax=listaEmpleado.index(empleado)
+
+        elif salarioNeto<salarioNetoMin:
+            salarioNetoMin=salarioNeto
+            indexEmpleadoMin=listaEmpleado.index(empleado)
+
+    # datos del de salarioNetoMax
+    nombreMax=listaEmpleado[indexEmpleadoMax]['nombre']
+    apellidoMax=listaEmpleado[indexEmpleadoMax]['apellido']
+
+    # datos del de salarioNetoMin
+    nombreMin=listaEmpleado[indexEmpleadoMin]['nombre']
+    apellidoMin=listaEmpleado[indexEmpleadoMin]['apellido']
+
+    print(f'El empleado con mayor sueldo neto de : ${salarioNetoMax} fue {apellidoMax}, {nombreMax}')
+    print(f'El empleado con menor sueldo neto de : ${salarioNetoMin} fue {apellidoMin}, {nombreMin}')
+
+def cantEmpleadosCargados(listaEmpleado):
+    cantidadEmpleados=len(listaEmpleado)
+    print(f'Cantidad de empleados cargados {cantidadEmpleados}')
+
+def mayoresA(listaEmpleado,edad=40):
+    # Punto 5
+
+    cantidadTotalEmpleados=len(listaEmpleado)
+    cantidadMayores=0
+
+    for empleado in listaEmpleado:
+        if edad<empleado['edad']:
+            cantidadMayores+=1
+
+    if cantidadMayores!=0:
+        porcentaje=100*cantidadMayores/cantidadTotalEmpleados
+        print(f'El porcentaje de empleados mayores a {edad} es de: % {porcentaje}')
+    else:
+        print(f'No hay mayores a {edad} años')
+
+def sucursalDeMayorPremio(listaEmpleado):
+    # Punto 6
+
+    maximoPremio=listaEmpleado[0]['premio']
+    sucursalMaxPremio=listaEmpleado[0]['sucursal']
+
+    for empleado in listaEmpleado:
+        if empleado['premio']>maximoPremio:
+            maximoPremio=empleado['premio']
+            sucursalMaxPremio=empleado['sucursal']
+
+    if maximoPremio!=0:
+        print(f'El empleado con mayor premio está en la sucursal: {sucursalMaxPremio}')
+
+def segundoListado(listaEmpleado):
+    # Punto 7
+    sumaSueldos=0
+    listadoFiltrado=[]
+    for empleado in listaEmpleado:
+        sumaSueldos+=empleado['sueldoBase']
+
+    sueldoBasicoPromedio=sumaSueldos/len(listaEmpleado)
+
+    print(f'Se realiza la siguiente lista con los empleados\nque tienen el salario menor a ${sueldoBasicoPromedio}')
+
+    for empleado in listaEmpleado:
+        sueldo=empleado.get('sueldoBase')
+        if sueldo<sueldoBasicoPromedio:
+            listadoFiltrado.append(empleado)
+            nombre=empleado.get('nombre')
+            apellido=empleado.get('apellido')
+            sucursal=empleado.get('sucursal')
+            premio=empleado.get('premio')
+
+            print(f'{apellido}, {nombre} de la sucursal {sucursal} tiene el salario de: ${sueldo}')
+    return listadoFiltrado
+
+def main():
+    import os
+
+    print('Bienvenido al programa de empleados\nOperaciones que realizará el programa:')
+    print('Ingrese 1 -> Carga de Empleados.\nIngrese 2 -> Mostrar el salario Neto de los empleados\nIngrese 3 -> Mostrar el empleado con salario máx y mín')
+    print('Ingrese 4 -> Mostrar la cantidad de empleados totales\nIngrese 5 -> Mostrar el porcentaje de empleados mayores a 40 años\nIngrese 6 -> Mostrar la sucursal del empleado con mayor premio\nIngrese 7 ->Listado de empleados con sueldo menor al promedio')
+    print('Ingrese 8 -> Terminar el programa')
+    userInput=opcion(input('Ingrese la opción: '))
+
+    listaEmpleado=[]
+    listadoFiltrado=[]
+
+    while userInput!='8':
+        os.system('clear')
+        if userInput=='1':
+            listaEmpleado=cargaEmpleado(listaEmpleado)
+        elif userInput=='2':
+            printEmpleados(listaEmpleado)
+        elif userInput=='3':
+            minMaxEmpleado(listaEmpleado)
+        elif userInput=='4':
+            cantEmpleadosCargados(listaEmpleado)
+        elif userInput=='5':
+            mayoresA(listaEmpleado)
+        elif userInput=='6':
+            sucursalDeMayorPremio(listaEmpleado)
+        elif userInput=='7':
+            listadoFiltrado=segundoListado(listaEmpleado)
+        
+      
+        print('Ingrese 1 -> Carga de Empleados.\nIngrese 2 -> Mostrar el salario Neto de los empleados\nIngrese 3 -> Mostrar el empleado con salario máx y mín')
+        print('Ingrese 4 -> Mostrar la cantidad de empleados totales\nIngrese 5 -> Mostrar el porcentaje de empleados mayores a 40 años\nIngrese 6 -> Mostrar la sucursal del empleado con mayor premio\nIngrese 7 ->Listado de empleados con sueldo menor al promedio')
+        print('Ingrese 8 -> Terminar el programa')
+
+        userInput=opcion(input('Ingrese la opción: '))
+
+main()
