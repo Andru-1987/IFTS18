@@ -3,8 +3,8 @@
 #Se tienen los siguientes datos
 # de cada uno de los empleados de una empresa:
 
-#     DNI
-#     Nombre y apellido
+#  DNI
+#  Nombre y apellido
 #  Sucursal
 #  Edad
 #  Sueldo básico (en $)
@@ -35,6 +35,7 @@
 
 
 def notEmpty(numero):
+# Funcion para permitir el ingreso de numeros del 0-9
     import re
 
     # Permite valores positivos
@@ -50,7 +51,7 @@ def notEmpty(numero):
 def opcion(userInput):
     import re
 
-    # Permite valores positivos
+    # Permite valores del 0-8
     user_format=re.compile(r'^[0-8]*$')
     valido=re.match(user_format,userInput)
 
@@ -63,7 +64,7 @@ def opcion(userInput):
 def letras(string):
     import re
 
-    # Permite valores positivos
+    # Permite solo el paso de valores tipo alfabetico
     user_format=re.compile(r'^[A-z]*$')
     valido=re.match(user_format,string)
 
@@ -83,6 +84,7 @@ def cargaEmpleado(listaEmpleado):
         if dni==999:
             break
         empleado={}
+        #se le coloca un tipo de formato a cada uno de los tipos de ingresos, tales como la primera letra en mayuscula
         
         empleado['dni']=dni
         empleado['nombre']=letras(input('Ingrese nombre del empleado: ').lower().capitalize())
@@ -210,9 +212,13 @@ def main():
     print('Ingrese 4 -> Mostrar la cantidad de empleados totales\nIngrese 5 -> Mostrar el porcentaje de empleados mayores a 40 años\nIngrese 6 -> Mostrar la sucursal del empleado con mayor premio\nIngrese 7 ->Listado de empleados con sueldo menor al promedio')
     print('Ingrese 8 -> Terminar el programa')
     userInput=opcion(input('Ingrese la opción: '))
-
+    
+    #se generan distintos tipos de listas vacias.
+    
     listaEmpleado=[]
     listadoFiltrado=[]
+    
+    # se realiza un menu permitiendole al ususario poder navegar por las distintas opciones presentadas
 
     while userInput!='8':
         os.system('clear')
